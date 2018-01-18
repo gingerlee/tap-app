@@ -29,6 +29,7 @@
       <label>ABV %</label>
       <input [(ngModel)]="selectedKeg.alcoholContent" type="text" name="kegInput4">
       <button type="submit" (click)="hookUp(selectedKeg.name, selectedKeg.brand, selectedKeg.price, selectedKeg.alcoholContent)">Hookup!</button>
+      <button (click)="clear()">Clear</button>
     </form>
   </div>
 </section>

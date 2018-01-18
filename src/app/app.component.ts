@@ -14,12 +14,15 @@ export class AppComponent {
     new Keg('Over Hopulation', 'Barley Brown\'s Beer', 6.00, '8.5%'),
     new Keg('Black (黑)', 'Mikkeller', 9.00, '17.5%')
   ];
-  selectedKeg: Keg = this.kegs[0];
+  selectedKeg = {};
   selectKeg(clickedKeg) {
     this.selectedKeg = clickedKeg;
   }
   hookUp(name, brand, price, alcoholContent){
     this.kegs.push(new Keg(name, brand, price, alcoholContent));
+  }
+  clear() {
+    this.selectedKeg = {};
   }
 }
 class Keg {
