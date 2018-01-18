@@ -6,6 +6,9 @@
     Welcome to {{ title }}!
   </h1>
   <h2>On Tap List:</h2>
+
+  <app-keg-list></app-keg-list>
+
   <ul *ngFor="let keggy of kegs" [ngClass]="{ 'low-warning': keggy.pintsLeft <= 10 }">
     <h3>{{keggy.name}}</h3>
     <button type="button" (click)="selectKeg(keggy)">Select</button>
