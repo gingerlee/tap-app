@@ -1,3 +1,9 @@
-<p>
-  keg-list works!
-</p>
+<ul *ngFor="let keggy of childKegList" [ngClass]="{ 'low-warning': keggy.pintsLeft <= 10 }">
+  <h3>{{keggy.name}}</h3>
+  <button type="button" (click)="selectKegButtonClicked(keggy)">Edit</button>
+  <button type="button" (click)="keggy.purchasePint()">Purchase</button>
+  <p><strong>Brewery:</strong> {{keggy.brand}}</p>
+  <li [ngClass]="keggy.priceColor()">${{keggy.price}}</li>
+  <li>{{keggy.alcoholContent}}</li>
+  <li>pt's remaining: {{keggy.pintsLeft}}</li>
+</ul>

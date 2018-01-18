@@ -1,32 +1,35 @@
-import { Component } from '@angular/core';
-import { KegListComponent } from './keg-list/keg-list.component';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class AppComponent {
   title = 'Ginga\'s tap room';
-  kegs: Keg[] = [
+  masterKegList: Keg[] = [
     new Keg('GingaNinja', 'Two Towns', 3.50, '5.2%'),
     new Keg('Nights of Chris-Lumbus', 'Geno-Ciders', 6.50, '7.5%'),
     new Keg('Over Hopulation', 'Barley Brown\'s Beer', 6.00, '8.5%'),
     new Keg('Black (黑)', 'Mikkeller', 9.00, '17.5%')
   ];
-  selectedKeg = {};
+  selectedKeg = null;
+
+  hookUp(name, brand, price, alcoholContent){
+    this.masterKegList.push(new Keg(name, brand, price, alcoholContent));
+  }
+
   selectKeg(clickedKeg) {
     this.selectedKeg = clickedKeg;
   }
-  hookUp(name, brand, price, alcoholContent){
-    this.kegs.push(new Keg(name, brand, price, alcoholContent));
-  }
-  clear() {
-    this.selectedKeg = {};
+
+  done() {
+    this.selectedKeg = null;
   }
 }
-class Keg {
+export class Keg {
   public pintsLeft: number = 15;
 
   constructor(public name: string, public brand: string, public price: number, public alcoholContent: string) { }
@@ -45,18 +48,4 @@ class Keg {
       return 'price-high';
     }
   }
-  // isPriceLow() {
-  //   if (parseInt(this.price.replace(/[^\d]/g, ''), 10) <= 500){
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-  // isPriceMedium() {
-  //   if (parseInt(this.price.replace(/[^\d]/g, ''), 10) <= 750){
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
 }

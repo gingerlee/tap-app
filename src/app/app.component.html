@@ -7,32 +7,11 @@
   </h1>
   <h2>On Tap List:</h2>
 
-  <app-keg-list></app-keg-list>
+  <app-keg-list [childKegList]="masterKegList" (clickSender)="selectKeg($event)"></app-keg-list>
 
-  <ul *ngFor="let keggy of kegs" [ngClass]="{ 'low-warning': keggy.pintsLeft <= 10 }">
-    <h3>{{keggy.name}}</h3>
-    <button type="button" (click)="selectKeg(keggy)">Select</button>
-    <button type="button" (click)="keggy.purchasePint()">Purchase</button>
-    <p><strong>Brewery:</strong> {{keggy.brand}}</p>
-    <li [ngClass]="keggy.priceColor()">${{keggy.price}}</li>
-    <li>{{keggy.alcoholContent}}</li>
-    <li>pt's remaining: {{keggy.pintsLeft}}</li>
-  </ul>
+  <app-keg-edit [childSelectedKeg]="selectedKeg" (doneEditingSender)="done()"></app-keg-edit>
+
+
   </div>
-  <div>
-    <h2>Keg Hookup:</h2>
-    <p>{{name}} {{brand}} {{price}} {{alcoholContent}}</p>
-    <form id="kegForm">
-      <label>Libation Callsign</label>
-      <input [(ngModel)]="selectedKeg.name" type="text" name="kegInput1">
-      <label>Brand name</label>
-      <input [(ngModel)]="selectedKeg.brand" type="text" name="kegInput2">
-      <label>Price $</label>
-      <input [(ngModel)]="selectedKeg.price" type="text" name="kegInput3">
-      <label>ABV %</label>
-      <input [(ngModel)]="selectedKeg.alcoholContent" type="text" name="kegInput4">
-      <button type="submit" (click)="hookUp(selectedKeg.name, selectedKeg.brand, selectedKeg.price, selectedKeg.alcoholContent)">Hookup!</button>
-      <button (click)="clear()">Clear</button>
-    </form>
-  </div>
+
 </section>

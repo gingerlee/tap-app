@@ -1,0 +1,14 @@
+<div *ngIf="childSelectedKeg">
+  <h2>Keg Hookup:</h2>
+  <p>{{name}} {{brand}} {{price}} {{alcoholContent}}</p>
+    <label>Libation Callsign</label>
+    <input [(ngModel)]="childSelectedKeg.name" type="text" name="kegInput1">
+    <label>Brand name</label>
+    <input [(ngModel)]="childSelectedKeg.brand" type="text" name="kegInput2">
+    <label>Price $</label>
+    <input [(ngModel)]="childSelectedKeg.price" type="text" name="kegInput3">
+    <label>ABV %</label>
+    <input [(ngModel)]="childSelectedKeg.alcoholContent" type="text" name="kegInput4">
+    <!-- <button type="submit" (click)="hookUp(selectedKeg.name, selectedKeg.brand, selectedKeg.price, selectedKeg.alcoholContent)">Hookup!</button> -->
+  <button (click)="doneEditing()">Done</button>
+</div>
