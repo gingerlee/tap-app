@@ -6,10 +6,12 @@
     Welcome to {{ title }}!
   </h1>
   <h2>On Tap List:</h2>
-  <ul *ngFor="let keggy of kegs">
+  <ul *ngFor="let keggy of kegs" [ngClass]="{ 'low-warning': keggy.pintsLeft <= 10 }">
     <h3>{{keggy.name}}</h3>
+    <button type="button" (click)="selectKeg(keggy)">Select</button>
+    <button type="button" (click)="keggy.purchasePint()">Purchase</button>
     <p><strong>Brewery:</strong> {{keggy.brand}}</p>
-    <li>{{keggy.price}}</li>
+    <li [ngClass]="keggy.priceColor()">${{keggy.price}}</li>
     <li>{{keggy.alcoholContent}}</li>
     <li>pt's remaining: {{keggy.pintsLeft}}</li>
   </ul>
@@ -19,14 +21,14 @@
     <p>{{name}} {{brand}} {{price}} {{alcoholContent}}</p>
     <form id="kegForm">
       <label>Libation Callsign</label>
-      <input #val-name [(ngModel)]="name" type="text" name="keg-input">
+      <input [(ngModel)]="selectedKeg.name" type="text" name="kegInput1">
       <label>Brand name</label>
-      <input #val-brand [(ngModel)]="brand" type="text" name="keg-input">
+      <input [(ngModel)]="selectedKeg.brand" type="text" name="kegInput2">
       <label>Price $</label>
-      <input #val-price [(ngModel)]="price" type="text" name="keg-input">
+      <input [(ngModel)]="selectedKeg.price" type="text" name="kegInput3">
       <label>ABV %</label>
-      <input #val-alcoholContent [(ngModel)]="alcoholContent" type="text" name="keg-input">
-      <button (click)="hookUp(name.value, brand.value, price.value, alcoholContent.value)">Hookup!</button>
+      <input [(ngModel)]="selectedKeg.alcoholContent" type="text" name="kegInput4">
+      <button type="submit" (click)="hookUp(selectedKeg.name, selectedKeg.brand, selectedKeg.price, selectedKeg.alcoholContent)">Hookup!</button>
     </form>
   </div>
 </section>

@@ -11,3 +11,15 @@ h1 {
 input, label {
   display: block;
 }
+.low-warning {
+  background: red;
+}
+.price-high {
+  color: red;
+}
+.price-medium { // these orders matter! try flipping these and it breaks!
+  color: gold;
+}
+.price-low { // these orders matter! try flipping these and it breaks!
+  color: green;
+}
