@@ -1,3 +1,12 @@
-<p>
-  keg-add works!
-</p>
+<div>
+  <h2>Keg Add:</h2>
+    <label>Libation Callsign</label>
+    <input #name type="text" name="kegInput1">
+    <label>Brand name</label>
+    <input #brand type="text" name="kegInput2">
+    <label>Price $</label>
+    <input #price type="text" name="kegInput3">
+    <label>ABV %</label>
+    <input #alcoholContent type="text" name="kegInput4">
+    <button type="submit" (click)="hookUp(name.value, brand.value, price.value, alcoholContent.value)">Add Keg!</button>
+</div>

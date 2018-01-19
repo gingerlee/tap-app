@@ -7,13 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class KegListComponent implements OnInit{
-  @Input() childKegList: Keg[]; 
+  @Input() childKegList: Keg[];
   @Output() clickSender = new EventEmitter();
 
   constructor() { }
 
-  selectKegButtonClicked(kegToSelect: Keg) {
-    this.clickSender.emit(kegToSelect);
+  selectKegButtonClicked(keggy: Keg) {
+    this.clickSender.emit(keggy);
   }
 
   ngOnInit() {

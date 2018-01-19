@@ -11,6 +11,7 @@
 
   <app-keg-edit [childSelectedKeg]="selectedKeg" (doneEditingSender)="done()"></app-keg-edit>
 
+  <app-keg-add [KegConstructorFromParent]="Keg" (newKegAdder)="addKeg($event)"></app-keg-add>
 
   </div>
 

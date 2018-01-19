@@ -17,9 +17,6 @@ export class AppComponent {
   ];
   selectedKeg = null;
 
-  hookUp(name, brand, price, alcoholContent){
-    this.masterKegList.push(new Keg(name, brand, price, alcoholContent));
-  }
 
   selectKeg(clickedKeg) {
     this.selectedKeg = clickedKeg;
@@ -27,6 +24,10 @@ export class AppComponent {
 
   done() {
     this.selectedKeg = null;
+  }
+
+  addKeg(newKegFromChild: Keg){
+    this.masterKegList.push(newKegFromChild);
   }
 }
 export class Keg {
