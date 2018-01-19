@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Keg } from './../app.component';
+
 
 @Component({
   selector: 'app-keg-list',
@@ -7,6 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class KegListComponent implements OnInit{
+  filterProperty: string = "cheapness";
   @Input() childKegList: Keg[];
   @Output() clickSender = new EventEmitter();
 

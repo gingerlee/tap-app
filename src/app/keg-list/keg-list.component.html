@@ -1,4 +1,4 @@
-<ul *ngFor="let keggy of childKegList" [ngClass]="{ 'low-warning': keggy.pintsLeft <= 10 }">
+<ul *ngFor="let keggy of childKegList | priceness:filterProperty" [ngClass]="{ 'low-warning': keggy.pintsLeft <= 10 }">
   <h3>{{keggy.name}}</h3>
   <button type="button" (click)="selectKegButtonClicked(keggy)">Edit</button>
   <button type="button" (click)="keggy.purchasePint()">Purchase</button>

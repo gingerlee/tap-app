@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Keg } from './../app.component'
+import { Keg } from './../app.component';
 
 @Component({
   selector: 'app-keg-add',
@@ -13,7 +13,7 @@ export class KegAddComponent implements OnInit {
 
   constructor() { }
 
-  hookUp(name: string, brand: string, price: number, alcoholContent: string){
+  addKeg(name: string, brand: string, price: number, alcoholContent: string){
     var newKegToAdd: Keg = new Keg(name, brand, price, alcoholContent);
     this.newKegAdder.emit(newKegToAdd);
     // this.masterKegList.push(new Keg(name, brand, price, alcoholContent));
